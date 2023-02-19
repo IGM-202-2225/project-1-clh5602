@@ -33,7 +33,7 @@ to act fast and reckless in order to capitalize on the point bonus.
 
 ## You Additions
 
-_List out what you added to your game to make it different for you_
+The combo system will be interesting to implement. Having a combo meter incentivizes fast play, so I might change up how the health system works. Instead of losing lives, maybe the player will have a time limit each level, and will lose time when they get hit? Other than that, I plan to have at least two enemy types and two types of projectiles. I would also like to add some sort of map, so players won't need to wander the entire map to find the last few enemies. 
 
 ## Sources
 
