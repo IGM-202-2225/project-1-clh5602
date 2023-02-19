@@ -1,32 +1,35 @@
-# Project PROJECT_NAME
+# Project Prism Planet
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
 
 ### Student Info
 
--   Name: YOUR NAME
--   Section: ##
+-   Name: Colby Heaton
+-   Section: ##202.01
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: Side
+-   Camera Movement: Camera will be fixed.
+-   Player Health: Lives. Once lives are out, game over!
+-   End Condition: A round ends once all enemies on the map are defeated.
+-   Scoring: The player earns points by defeating enemies. A combo meter will increase the amount of points gained.
 
 ### Game Description
 
-_A brief explanation of your game. Inculde what is the objective for the player. Think about what would go on the back of a game box._
+Gameplay will by similar to that of _Defender_, in the sense that levels will be looping arenas where you must defeat each enemy to progress.
+The player can fly around the looping terrain while utilizing two different types of projectiles to clear waves of foes. Players will aim for a high-score
+by defeating enemies at a rapid pace. A time bonus will be awarded for each level based on how fast it was cleared, and a combo system encourages players
+to act fast and reckless in order to capitalize on the point bonus.
 
 ### Controls
 
 -   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+    -   Up: up arrow, increase altitude
+    -   Down: down arrow, decrease altitude
+    -   Left: left arrow, turn left, increase leftward speed
+    -   Right: right arrow, turn right, increase rightward speed
+-   Fire: Z Key fires forward shots, and X Key drops projectiles towards the ground.
 
 ## You Additions
 
