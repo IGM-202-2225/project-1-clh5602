@@ -48,9 +48,9 @@ public class PlayerStuff : MonoBehaviour
         {
             futureY = -cameraHalfHeight;
         }
-        if (futureY > cameraHalfHeight)
+        if (futureY > cameraHalfHeight * 0.8)
         {
-            futureY = cameraHalfHeight;
+            futureY = cameraHalfHeight * 0.8f;
         }
 
         // turning stuff
@@ -142,8 +142,6 @@ public class PlayerStuff : MonoBehaviour
     public void LeftRight(InputAction.CallbackContext context)
     {
         horiDirection = context.ReadValue<Vector2>();
-        Debug.Log(horiDirection.x);
-        
 
     }
 }
