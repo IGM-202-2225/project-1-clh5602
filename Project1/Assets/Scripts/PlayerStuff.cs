@@ -144,4 +144,14 @@ public class PlayerStuff : MonoBehaviour
         horiDirection = context.ReadValue<Vector2>();
 
     }
+
+    // When lazer happens
+    public void CreateLazer(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            planet.GetComponent<PlanetManagement>().CreateLaser(transform.position.y - 0.09f, (horiSpeed < 0));
+
+        }
+    }
 }

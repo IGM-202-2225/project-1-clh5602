@@ -299,6 +299,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 20.38
   timeRemaining: 120
+  lasers: []
+  laserPref: {fileID: 6444575426643728741, guid: ed5ac83ee91581d41ae547884c0450da, type: 3}
+  player: {fileID: 1187866911}
 --- !u!1 &316235169
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,6 +698,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 56be1c71-560a-4dab-85b7-6507a0ba565b
     m_ActionName: Player/Left/Right[/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1187866914}
+        m_TargetAssemblyTypeName: PlayerStuff, Assembly-CSharp
+        m_MethodName: CreateLazer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ba0a9cd6-084a-46bf-8db3-69c1678ba2fe
+    m_ActionName: Player/FireLazer[/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
