@@ -37,7 +37,7 @@ public class LaserPath : MonoBehaviour
 
         transform.Translate(SPEED * Time.deltaTime * direction, 0, 0);
 
-        if (Mathf.Abs(transform.position.x) > camWidth * 2)
+        if (Mathf.Abs(transform.position.x) > camWidth * 1.2f + Mathf.Abs(Camera.main.transform.position.x))
         {
             deleteMe = true;
         }

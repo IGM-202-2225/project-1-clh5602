@@ -119,7 +119,7 @@ TextureImporter:
       name: laserStrip_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
         width: 512
         height: 2
@@ -140,7 +140,7 @@ TextureImporter:
       name: laserStrip_1
       rect:
         serializedVersion: 2
-        x: 512
+        x: 513
         y: 0
         width: 512
         height: 2
@@ -161,7 +161,7 @@ TextureImporter:
       name: laserStrip_2
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1026
         y: 0
         width: 512
         height: 2
@@ -182,7 +182,7 @@ TextureImporter:
       name: laserStrip_3
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 1537
         y: 0
         width: 512
         height: 2
@@ -203,7 +203,7 @@ TextureImporter:
       name: laserStrip_4
       rect:
         serializedVersion: 2
-        x: 2048
+        x: 2050
         y: 0
         width: 512
         height: 2
@@ -224,7 +224,7 @@ TextureImporter:
       name: laserStrip_5
       rect:
         serializedVersion: 2
-        x: 2560
+        x: 2561
         y: 0
         width: 512
         height: 2

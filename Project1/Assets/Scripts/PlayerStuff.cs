@@ -23,6 +23,10 @@ public class PlayerStuff : MonoBehaviour
 
     static float cameraHalfHeight, cameraHalfWidth;
 
+    public float invincible = 0;
+
+    public float radius = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,10 @@ public class PlayerStuff : MonoBehaviour
         futureY = transform.position.y;
 
         mySprite = GetComponent<SpriteRenderer>();
+
+        radius = mySprite.bounds.size.y / 2;
+
+        InvokeRepeating("Flicker", 0.1f, 0.1f); // Sprite flashing
     }
 
     // Update is called once per frame
@@ -128,8 +136,9 @@ public class PlayerStuff : MonoBehaviour
         }
 
         // Update vals
-        transform.position = new Vector3(futureX, futureY, -9.5f);
+        transform.position = new Vector3(futureX, futureY, -8f);
         planet.rotationSpeed = horiSpeed * 3.0f;
+        invincible -= Time.deltaTime;
     }
 
     // When move happens
@@ -152,6 +161,18 @@ public class PlayerStuff : MonoBehaviour
         {
             planet.GetComponent<PlanetManagement>().CreateLaser(transform.position.y - 0.09f, (horiSpeed < 0));
 
+        }
+    }
+
+    public void Flicker()
+    {
+        if (invincible > 0)
+        {
+            mySprite.enabled = !mySprite.enabled;
+        }
+        else
+        {
+            mySprite.enabled = true;
         }
     }
 }
