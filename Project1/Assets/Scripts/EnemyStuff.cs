@@ -12,6 +12,11 @@ public class EnemyStuff : MonoBehaviour
 
     public PlanetManagement planet;
 
+    public PlayerStuff player;
+    public GameObject cannonPref;
+    public GameObject myCannon;
+    private float cannonAngle = 0;
+
     public float difference;
 
     public bool type = true;
@@ -22,8 +27,6 @@ public class EnemyStuff : MonoBehaviour
     private float cycleTime;
     private float startY;
     private float fireTimer = 0;
-
-    public bool created = false;
 
     public float radius = 0;
 
@@ -78,6 +81,13 @@ public class EnemyStuff : MonoBehaviour
         difference *= -1;
 
         transform.position = new Vector3((difference) * scale, myY, -5);
+
+        if (!type) // Enemy 2
+        {
+            myCannon = Instantiate(cannonPref);
+            myCannon.transform.position = new Vector3(transform.position.x, transform.position.y, -4.68f);
+            //myCannon.transform.SetParent(transform);
+        }
     }
 
     // Update is called once per frame
@@ -90,8 +100,6 @@ public class EnemyStuff : MonoBehaviour
         {
             Enemy1Movement();
         }
-
-
 
         // Clamp hori pos
         myHoriPos = (myHoriPos + 360) % 360;
@@ -126,7 +134,15 @@ public class EnemyStuff : MonoBehaviour
 
         transform.position = new Vector3((difference) * scale, myY, -5);
 
-        created = true;
+        if (!type && Mathf.Abs(difference) <= 50) // Enemy 2
+        {
+            cannonAngle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x);
+            cannonAngle *= 180 / Mathf.PI;
+            cannonAngle -= 90;
+            myCannon.transform.position = new Vector3(transform.position.x, transform.position.y, -4.68f);
+            myCannon.transform.rotation = Quaternion.Euler(0, 0, cannonAngle);
+        }
+
 
     }
 

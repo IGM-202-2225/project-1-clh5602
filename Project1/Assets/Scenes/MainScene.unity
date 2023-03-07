@@ -392,6 +392,7 @@ MonoBehaviour:
   enemy1Collection: []
   laserPref: {fileID: 6444575426643728741, guid: ed5ac83ee91581d41ae547884c0450da, type: 3}
   enemy1Pref: {fileID: 158288420621282673, guid: f8ac7450ff370ee4c9c6028e8cf0b822, type: 3}
+  enemy2Pref: {fileID: 1943049037048737184, guid: 09d5a97ec8edacf458ab1df5a4572a7d, type: 3}
   player: {fileID: 1187866914}
   explosion: {fileID: 4794129684265301603, guid: 41ec502d10efd1344b6a2a7cf2673258, type: 3}
   map: {fileID: 532603883}

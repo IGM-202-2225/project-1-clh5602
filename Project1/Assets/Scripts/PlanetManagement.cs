@@ -12,13 +12,16 @@ public class PlanetManagement : MonoBehaviour
     private const int MAX_LASERS = 3;
 
     public List<GameObject> lasers = new List<GameObject>();
-    public List<EnemyStuff> enemy1Collection = new List<EnemyStuff>();
+    public List<EnemyStuff> enemyCollection = new List<EnemyStuff>();
 
     [SerializeField]
     GameObject laserPref;
 
     [SerializeField]
     GameObject enemy1Pref;
+
+    [SerializeField]
+    GameObject enemy2Pref;
 
     [SerializeField]
     PlayerStuff player;
@@ -36,7 +39,7 @@ public class PlanetManagement : MonoBehaviour
 
         for (int i = 0; i < Random.Range(5, 10); i++)
         {
-            CreateEnemy1();
+            CreateEnemy(true);
         }
     
     }
@@ -95,7 +98,7 @@ public class PlanetManagement : MonoBehaviour
         for (int i = lasers.Count-1; i >= 0; i--)
         {
             // Collisions
-            foreach (EnemyStuff enemy in enemy1Collection)
+            foreach (EnemyStuff enemy in enemyCollection)
             {
                 enemy.LaserCollisionCheck(lasers[i].transform.position);
             }
@@ -107,55 +110,74 @@ public class PlanetManagement : MonoBehaviour
         }
     }
 
-    void CreateEnemy1()
+    void CreateEnemy(bool type)
     {
-        GameObject newEnemy = Instantiate(enemy1Pref, new Vector3(0, 0, -5), Quaternion.identity);
+        GameObject newEnemy;
+        if (type)
+        {
+            newEnemy = Instantiate(enemy1Pref, new Vector3(0, 0, -5), Quaternion.identity);
+        }
+        else
+        {
+            newEnemy = Instantiate(enemy2Pref, new Vector3(0, -5, -5), Quaternion.identity);
+        }
+        
         EnemyStuff enemyCode = newEnemy.GetComponent<EnemyStuff>();
 
         // Planet ref
         enemyCode.planet = GetComponent<PlanetManagement>();
+
+        // Player ref
+        if (!type)
+        {
+            enemyCode.player = player;
+        }
 
         // Random starting pos offscreen
         enemyCode.myHoriPos = (Random.Range(60, 300) + transform.eulerAngles.y) % 360;
 
         map.CreateEnemyIcon(enemyCode);
 
-        enemy1Collection.Add(enemyCode);
+        enemyCollection.Add(enemyCode);
 
     }
 
     void EnemyCollisions()
     {
-        for (int i = enemy1Collection.Count - 1; i >= 0; i--)
+        for (int i = enemyCollection.Count - 1; i >= 0; i--)
         {
-            if (enemy1Collection[i].deleteMe)
+            if (enemyCollection[i].deleteMe)
             {
-                CreateExplosion(enemy1Collection[i].transform.position);
+                CreateExplosion(enemyCollection[i].transform.position);
 
-                Destroy(enemy1Collection[i].gameObject);
+                if (!enemyCollection[i].type)
+                {
+                    Destroy(enemyCollection[i].myCannon);
+                }
+                Destroy(enemyCollection[i].gameObject);
 
                 timeRemaining += 1;
 
-                enemy1Collection.RemoveAt(i);
+                enemyCollection.RemoveAt(i);
             } 
-            else if (player.invincible <= 0 && enemy1Collection[i].created)
+            else if (player.invincible <= 0)
             {
                 // Player touch enemy
-                if (EnemyPlayerCollision(enemy1Collection[i]))
+                if (EnemyPlayerCollision(enemyCollection[i]))
                 {
                     player.invincible = 2.0f;
                     timeRemaining -= 30.0f;
 
-                    enemy1Collection[i].deleteMe = true;
+                    enemyCollection[i].deleteMe = true;
                 }
             }
         }
 
-        if (enemy1Collection.Count == 0)
+        if (enemyCollection.Count == 0)
         {
             for (int i = 0; i < Random.Range(5, 10); i++)
             {
-                CreateEnemy1();
+                CreateEnemy(true);
             }
         }
         

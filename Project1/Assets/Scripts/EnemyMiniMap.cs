@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1MiniMap : MonoBehaviour
+public class EnemyMiniMap : MonoBehaviour
 {
     public EnemyStuff enemy;
     static float cameraHeight, half;

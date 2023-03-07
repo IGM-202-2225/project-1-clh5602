@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     GameObject mapIcon;
 
-    public List<Enemy1MiniMap> enemyIcons = new List<Enemy1MiniMap>();
+    public List<EnemyMiniMap> enemyIcons = new List<EnemyMiniMap>();
 
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class MapManager : MonoBehaviour
         newIcon.transform.localScale = Vector3.one;
         newIcon.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
-        Enemy1MiniMap iconCode = newIcon.GetComponent<Enemy1MiniMap>();
+        EnemyMiniMap iconCode = newIcon.GetComponent<EnemyMiniMap>();
         iconCode.enemy = enemyRef;
 
         enemyIcons.Add(iconCode);
