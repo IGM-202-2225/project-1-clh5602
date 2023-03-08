@@ -46,6 +46,23 @@ public class PlayerStuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!planet.inGame)
+        {
+            if (transform.position.y > 0.05f)
+            {
+                vertDirection = new Vector2(0, -0.2f);
+            }
+            else if (transform.position.y < -0.05f) 
+            { 
+                vertDirection = new Vector2(0, 0.2f);
+            }
+            else
+            {
+                vertDirection = Vector2.zero;
+            }
+            
+            horiDirection = Vector2.zero;
+        }
         futureX = transform.position.x;
         futureY = transform.position.y + vertDirection.y * Time.deltaTime * 7;
 
@@ -138,26 +155,35 @@ public class PlayerStuff : MonoBehaviour
         // Update vals
         transform.position = new Vector3(futureX, futureY, -8f);
         planet.rotationSpeed = horiSpeed * 3.0f;
-        invincible -= Time.deltaTime;
+        if (invincible > 0)
+        {
+            invincible -= Time.deltaTime;
+        }
+        
     }
 
     // When move happens
     public void AscendDescend(InputAction.CallbackContext context)
     {
-        vertDirection = context.ReadValue<Vector2>();
+        if (planet.inGame)
+        {
+            vertDirection = context.ReadValue<Vector2>();
+        }
     }
 
     // When move happens
     public void LeftRight(InputAction.CallbackContext context)
     {
-        horiDirection = context.ReadValue<Vector2>();
-
+        if (planet.inGame)
+        {
+            horiDirection = context.ReadValue<Vector2>();
+        }
     }
 
-    // When lazer happens
-    public void CreateLazer(InputAction.CallbackContext context)
+    // When laser happens
+    public void CreateLaser(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed && planet.inGame)
         {
             planet.GetComponent<PlanetManagement>().CreateLaser(transform.position.y - 0.09f, (horiSpeed < 0));
 

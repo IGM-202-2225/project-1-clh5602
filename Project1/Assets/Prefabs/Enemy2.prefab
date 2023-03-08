@@ -121,8 +121,11 @@ MonoBehaviour:
   myHoriPos: 0
   deleteMe: 0
   planet: {fileID: 0}
+  player: {fileID: 0}
   cannonPref: {fileID: 9065063755798324797, guid: 50272f3194556434e8ce6410123c8578, type: 3}
+  myCannon: {fileID: 0}
+  bulletPref: {fileID: 9051539999491623073, guid: 8791c741f8f521b4a9cc275329db9e49, type: 3}
+  myBullet: {fileID: 0}
   difference: 0
   type: 0
-  created: 0
   radius: 0

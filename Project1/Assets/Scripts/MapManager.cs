@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
@@ -13,25 +14,17 @@ public class MapManager : MonoBehaviour
 
     public List<EnemyMiniMap> enemyIcons = new List<EnemyMiniMap>();
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void CreateEnemyIcon(EnemyStuff enemyRef)
     {
         GameObject newIcon = Instantiate(mapIcon);
         newIcon.transform.SetParent(transform);
         newIcon.transform.localScale = Vector3.one;
         newIcon.transform.localRotation = Quaternion.Euler(Vector3.zero);
+
+        if (!enemyRef.type) // Blue icon
+        {
+            newIcon.GetComponent<Image>().color = new Color(0.39f, 0.74f, 1, 1);
+        }
 
         EnemyMiniMap iconCode = newIcon.GetComponent<EnemyMiniMap>();
         iconCode.enemy = enemyRef;

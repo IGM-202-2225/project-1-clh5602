@@ -20,5 +20,13 @@ public class Timer : MonoBehaviour
     void Update()
     {
         myText.text = String.Format("{0:000.00}", Math.Round(planet.timeRemaining, 2));
+        if (planet.timeRemaining > 15)
+        {
+            myText.color = new Color(1, 1, 1, 1);
+        }
+        else
+        {
+            myText.color = new Color(1, 0, 0, 1);
+        }
     }
 }
