@@ -10,9 +10,9 @@
 ## Game Design
 
 -   Camera Orientation: Side
--   Camera Movement: Camera will be fixed.
+-   Camera Movement: Camera will pan ahead the player in the direction they're facing.
 -   Player Health: Time. Time constantly decreases, and it decreases even more when hit! Defeat enemies to regain time.
--   End Condition: A round ends once all enemies on the map are defeated.
+-   End Condition: A round ends once all enemies on the map are defeated. The game has infinite rounds, but the game will end once Time is up.
 -   Scoring: The player earns points by defeating enemies. A combo meter will increase the amount of points gained.
 
 ### Game Description
