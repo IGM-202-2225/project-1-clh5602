@@ -11,7 +11,7 @@
 
 -   Camera Orientation: Side
 -   Camera Movement: Camera will be fixed.
--   Player Health: Lives. Once lives are out, game over!
+-   Player Health: Time. Time constantly decreases, and it decreases even more when hit! Defeat enemies to regain time.
 -   End Condition: A round ends once all enemies on the map are defeated.
 -   Scoring: The player earns points by defeating enemies. A combo meter will increase the amount of points gained.
 
@@ -19,8 +19,7 @@
 
 Gameplay will by similar to that of _Defender_, in the sense that levels will be looping arenas where you must defeat each enemy to progress.
 The player can fly around the looping terrain while utilizing two different types of projectiles to clear waves of foes. Players will aim for a high-score
-by defeating enemies at a rapid pace. A time bonus will be awarded for each level based on how fast it was cleared, and a combo system encourages players
-to act fast and reckless in order to capitalize on the point bonus.
+by defeating enemies at a rapid pace. A combo system encourages players to act fast and reckless in order to capitalize on the point bonus.
 
 ### Controls
 
@@ -29,22 +28,30 @@ to act fast and reckless in order to capitalize on the point bonus.
     -   Down: down arrow, decrease altitude
     -   Left: left arrow, turn left, increase leftward speed
     -   Right: right arrow, turn right, increase rightward speed
--   Fire: Z Key fires forward shots, and X Key drops projectiles towards the ground.
+-   Fire: Z Key fires forward shots.
 
 ## You Additions
 
-The combo system will be interesting to implement. Having a combo meter incentivizes fast play, so I might change up how the health system works. Instead of losing lives, maybe the player will have a time limit each level, and will lose time when they get hit? Other than that, I plan to have at least two enemy types and two types of projectiles. I would also like to add some sort of map, so players won't need to wander the entire map to find the last few enemies. 
+The combo system will be interesting to implement. Having a combo meter in addition to a time limit incentivises reckless play, which is good for a risk/reward feeling. I plan to have at least two enemy types that move and act completely different from each other. I created every art asset in this game, except for the font. Implementing a map was difficult, yet a necessity to make the game fun to play. Although the procedural generation is nothing fancy, it randomly places and creates enemies around the map, and they'll always start offscreen as to be fair to the player.
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+Font "Alarm Clock" by David J Patterson on dafont.com
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+Can't think of any outstanding issues.
 
 ### Requirements not completed
 
-_If you did not complete a project requirement, notate that here_
+It's debatable whether I properly used velocity vectors for the player, enemies, and bullets. In fact, I didn't really: 
+- The player has seperate x and y velocity vectors - I did this so that horizontal movement was seperate from ascending / descending. I thought that if the player was moving forward at fullspeed, then moved upward, it would feel jagged or discombobulating when the ship would slow down (due to normalized vectors). 
+
+- Player bullets only moved horizontally, so I made the code easier on myself by having a single float dictate the laser's velocity. 
+
+- The first enemy variant moves on a Sin wave pattern with its amplitude, speed, and wavelength being randomly generated. I did not really see the need to use velocity vectors here, and I didn't want to compromise my vision.
+
+- The second enemy variant is stationary, but its bullets DO properly use direction and velocity vectors, so that's cool.
+
+So yeah, I believe I'm going to get partial credit here, but it's all good. I'm happy with what I made, so I'm not too worried about the grade :)
 
